@@ -1,0 +1,76 @@
+{
+  "date": "2026-11-01",
+  "sourceChannel": "TLDR AI + 机器之心",
+  "items": [
+    {
+      "index": 1,
+      "title": "OpenAI 发布 GPT-5 多模态大模型",
+      "points": [
+        "推理能力较 GPT-4o 提升约 40%，数学和代码 benchmarks 全面领先",
+        "API 已开放付费用户使用，输入定价为每百万 token 10 美元"
+      ],
+      "keyNumbers": [
+        { "value": "40%", "label": "推理能力提升" },
+        { "value": "$10", "label": "每百万 token" }
+      ],
+      "sourceName": "OpenAI 官方",
+      "sourceUrl": "https://openai.com/index/gpt-5"
+    },
+    {
+      "index": 2,
+      "title": "Anthropic Claude 3.7 Sonnet 上线",
+      "points": [
+        "支持 200K 上下文窗口，工具调用准确率提升显著",
+        "Claude Code 同步更新，编程辅助能力增强"
+      ],
+      "keyNumbers": [
+        { "value": "200K", "label": "上下文窗口" }
+      ],
+      "sourceName": "Anthropic 博客",
+      "sourceUrl": "https://www.anthropic.com/news/claude-3-7-sonnet"
+    },
+    {
+      "index": 3,
+      "title": "Google DeepMind 推出 Gemini 2.5 Pro",
+      "points": [
+        "支持 100 万 token 超长上下文，可一次性处理整本书",
+        "延迟降低 50%，适合实时对话场景"
+      ],
+      "keyNumbers": [
+        { "value": "1M", "label": "token 上下文" },
+        { "value": "50%", "label": "延迟降低" }
+      ],
+      "sourceName": "Google DeepMind",
+      "sourceUrl": "https://deepmind.google/technologies/gemini/"
+    },
+    {
+      "index": 4,
+      "title": "Meta 开源 Llama 4 系列模型",
+      "points": [
+        "包含 8B、70B 和 400B 三个规格，全部免费商用",
+        "多模态能力首次加入，支持图文混合输入"
+      ],
+      "keyNumbers": [
+        { "value": "400B", "label": "最大参数" },
+        { "value": "免费", "label": "商用授权" }
+      ],
+      "sourceName": "Meta AI",
+      "sourceUrl": "https://ai.meta.com/blog/llama-4/"
+    },
+    {
+      "index": 5,
+      "title": "国产大模型 Qwen 3 发布",
+      "points": [
+        "阿里云通义千问最新一代，中英文能力追平国际一线",
+        "开源版本已上线 Hugging Face，下载量首日破百万"
+      ],
+      "keyNumbers": [
+        { "value": "100万+", "label": "首日下载量" }
+      ],
+      "sourceName": "机器之心",
+      "sourceUrl": "https://www.jiqizhixin.com/articles/2026-11-01-1"
+    }
+  ],
+  "narrationScript": "各位好，欢迎收看今天的 AI 早报。\n首先来看第一条，OpenAI 正式发布了 GPT-5 多模态大模型。\n推理能力比 GPT-4o 提升了约 40%，数学和代码基准测试全面领先。\nAPI 已经对付费用户开放，输入定价为每百万 token 10 美元。\n第二条，Anthropic 推出 Claude 3.7 Sonnet。\n支持 20 万 token 上下文窗口，工具调用准确率有显著提升。\nClaude Code 编程助手也同步更新了。\n第三条，Google DeepMind 发布 Gemini 2.5 Pro。\n最大的亮点是支持 100 万 token 的超长上下文，可以一次性处理整本书的内容。\n同时延迟降低了 50%，更适合实时对话场景。\n第四条，Meta 开源了 Llama 4 系列模型。\n包含 8B、70B 和 400B 三个规格，全部免费商用。\n这也是 Llama 系列首次加入多模态能力，支持图文混合输入。\n最后一条，国产大模型再传好消息。\n阿里云通义千问 Qwen 3 正式发布，中英文能力追平国际一线水平。\n开源版本上线 Hugging Face 首日，下载量就突破了一百万次。\n以上就是今天的 AI 早报，感谢收看，明天见。",
+  "unstableNote": "今日 Import AI 未更新，已用其他来源补充"
+}

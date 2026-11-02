@@ -1,0 +1,35 @@
+{
+  "date": "2026-11-01",
+  "sourceChannel": "TLDR AI",
+  "items": [
+    {
+      "index": 1,
+      "title": "OpenAI 发布 GPT-5",
+      "points": [
+        "推理能力提升 40%",
+        "API 已开放"
+      ],
+      "keyNumbers": [
+        { "value": "40%", "label": "推理提升" }
+      ],
+      "sourceName": "OpenAI",
+      "sourceUrl": "https://openai.com/"
+    },
+    {
+      "index": 2,
+      "title": "Meta 开源 Llama 4",
+      "points": [
+        "最大 400B 参数",
+        "免费商用"
+      ],
+      "keyNumbers": [
+        { "value": "400B", "label": "参数规模" },
+        { "value": "免费", "label": "商用" }
+      ],
+      "sourceName": "Meta AI",
+      "sourceUrl": "https://ai.meta.com/"
+    }
+  ],
+  "narrationScript": "各位好，欢迎收看 AI 早报。\n第一条，OpenAI 发布 GPT-5。\n推理能力提升 40%，API 已开放。\n第二条，Meta 开源 Llama 4。\n最大 400B 参数，全部免费商用。\n以上就是今天的内容，明天见。",
+  "unstableNote": "测试数据"
+}

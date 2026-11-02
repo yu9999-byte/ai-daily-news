@@ -1,0 +1,19 @@
+{
+  "name": "ai-daily-news",
+  "version": "1.0.0",
+  "description": "AI 资讯早报自动化生成工具 - 采集资讯 + 生成视频",
+  "main": "src/main.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/main.js",
+    "render": "node src/render.js",
+    "video": "node src/video.js",
+    "test": "node src/main.js --brief examples/sample-brief.json --output output/"
+  },
+  "keywords": ["ai-news", "daily-brief", "video-generation", "playwright", "ffmpeg"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "playwright": "^1.48.0"
+  }
+}
