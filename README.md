@@ -1,5 +1,30 @@
 # AI 资讯早报 · 自动化生成工具
 
+## 把仓库地址交给你的 Agent
+
+复制下面这段话到支持联网、文件操作和终端执行的 Agent：
+
+```text
+请读取 https://github.com/yu9999-byte/ai-daily-news 的 README.md、AGENTS.md 和 PROMPT.md。
+将仓库克隆到独立目录，遵循 AGENTS.md 检查环境，采集我所在时区昨天的 AI 资讯，
+生成有来源链接的文字简报、旁白稿和视频。遇到缺少工具、访问失败或配音失败时如实报告。
+交付前检查最终视频的声音、字幕、画面和时长，不把示例数据当作真实新闻。
+```
+
+仓库地址不会自动给 Agent 增加权限或工具。仅支持聊天的模型可以协助写稿，完整出片需要本地执行能力；不支持读取 GitHub 的 Agent 可由用户下载项目后读取本地文件。支持 Skill 的工具可按各自安装规范使用根目录的 `SKILL.md`，无需 Skill 系统也能按 `AGENTS.md` 执行。
+
+### 当前版本的实际边界
+
+本版本保留原始渲染代码，补充 Agent 使用文档，尚未在此次发布中验证完整出片。新闻采集、事实核实与写稿由 Agent 完成，代码本身没有爬虫、调度器或新闻核实服务。
+
+- 60-90 秒、严格音画同步、字幕淡入淡出、翻页和音乐压低是制作目标，并非当前程序全部实现的保证。
+- 旁白按句数分配到新闻页，音频直接拼接，可能与片头、新闻页和字幕错位；合成使用 `-shortest`，还可能截短片尾。
+- 长字幕可能被截断；现有关键帧复制自渲染原图，不是最终 MP4 抽帧，验收应另外从成片抽帧。
+- edge-tts 是在线服务，失败可能退化为静音；存在 MP4 文件不等于有正常旁白。
+- 示例 JSON 仅用于演示结构，不是经过核实的新闻，不应对外作为当日资讯发布。
+
+如要求严格达标，Agent 应先报告这些限制，再按用户授权修复和验证。环境或工具不足时，交付可完成的文字材料并说明缺失项。
+
 每天自动采集 AI 行业资讯，生成文字简报 + 60-90 秒讲解视频。
 
 > 瑞士风版式 · 纸白底 · 安全橙 #FF6B35 · 1920×1080 横屏
@@ -16,7 +41,7 @@
 
 ```bash
 # 克隆仓库
-git clone <your-repo-url>
+git clone https://github.com/yu9999-byte/ai-daily-news.git
 cd ai-daily-news
 
 # 安装依赖
@@ -31,7 +56,7 @@ node src/main.js --brief examples/sample-brief.json --output output/
 
 # 输出在 output/ 目录：
 #   - daily-news.mp4    成片
-#   - narration_full.mp3  旁白音频
+#   - audio/narration_full.mp3  旁白音频
 #   - keyframes/        4 张关键帧截图
 #   - frames/           所有帧截图
 ```
@@ -95,6 +120,18 @@ ai-daily-news/
 - `unstableNote`: 不稳定说明（可选）
 
 ## 依赖
+
+先检查现有依赖再安装。建议在项目目录创建 Python 虚拟环境，使用 `python -m pip install -r requirements.txt`；安装 Node 依赖可用 `npm ci`，再执行 `npx playwright install chromium`。FFmpeg 与 ffprobe 必须能从终端调用。
+
+Windows 通常通过 `python` 或 `py` 启动 Python，而原入口硬编码调用 `python3` 和 `pip`。如果 `python3` 不可用，可在激活虚拟环境后分别运行：
+
+```powershell
+node src/render.js --brief brief.json --out output/frames
+python src/tts.py --brief brief.json --out output/audio
+node src/video.js --frames output/frames --audio output/audio --brief brief.json --out output
+```
+
+macOS/Linux 使用 `python3`；Linux 的 Chromium 可能还需要系统依赖（可按 Playwright 错误提示安装）。三个系统都需要可用的中文字体。当前代码的路径和字体兼容性需要实际验证，以上命令不是跨平台成功保证。
 
 - **Node.js** ≥ 18
 - **Playwright** + Chromium（或系统已安装 Chrome / Chromium）

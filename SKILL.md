@@ -7,6 +7,8 @@ description: 自动采集 AI 行业资讯，生成文字简报 + 60-90 秒讲解
 
 每天自动采集 AI 行业资讯，生成文字简报 + 讲解视频。
 
+先读取同目录的 `AGENTS.md`，按其中流程执行；安装和现有程序限制见 `README.md`，采编标准见 `PROMPT.md`。采集依赖 Agent 自身的联网工具，视频依赖本地终端能力。仓库 URL 不会自动安装 Skill，各 Agent 应按自身规范加载；不支持 Skill 时直接读取上述文档。
+
 ## 触发场景
 
 - "做一期 AI 早报"
@@ -50,9 +52,9 @@ npx playwright --version # 已安装
 
 1. **采集资讯** → 生成 `brief.json`
 2. **渲染帧** → `node src/render.js --brief brief.json --out frames/`
-3. **合成配音** → `python3 src/tts.py --script narration.txt --out audio/`
+3. **合成配音** → `python3 src/tts.py --brief brief.json --out audio/`
 4. **合成视频** → `node src/video.js --frames frames/ --audio audio/ --out output/`
-5. **交付检查** → 抽帧核对，有问题返工
+5. **交付检查** → 从最终 MP4 抽帧并试听；现有 keyframes 是原图副本。记录静音降级、音画错位等问题，按授权范围处理。
 
 ## 输入输出
 
@@ -65,7 +67,7 @@ npx playwright --version # 已安装
 
 - `daily-news.mp4` — 成片
 - `brief.json` — 文字简报数据
-- `narration.txt` — 旁白稿
+- `narration.txt` — 旁白稿，由 Agent 从 narrationScript 单独保存
 - `keyframes/` — 3-4 张关键帧
 
 ## 质量标准
@@ -73,5 +75,5 @@ npx playwright --version # 已安装
 - 数字、引用、链接必须可溯源
 - 文字不溢出、不重叠、不截断
 - 中文不缺字
-- 音画对齐（误差 ≤ 0.1s）
+- 音画对齐（误差 ≤ 0.1s 为目标，当前代码不保证，需验收）
 - 色调统一（安全橙 #FF6B35）
